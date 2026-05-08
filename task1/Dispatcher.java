@@ -4,8 +4,10 @@ import java.util.List;
 
 public class Dispatcher {
     public void printDailyReport(List<DeliveryTask> tasks){
+        int totalRevenue = 0;
         for (DeliveryTask task : tasks){
-            System.out.println(task.calculateTotalCost());
+            totalRevenue += task.calculateTotalCost();
         }
+        System.out.println(totalRevenue);
     }
 }
