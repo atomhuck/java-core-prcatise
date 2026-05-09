@@ -2,23 +2,20 @@ package task2;
 
 public class BotMessageProcessor {
     public void processMessage(String message){
-        if (message.contains("tiktok")) {
-            VideoDownloader downloader = new TikTokDownloader();
+        VideoDownloader downloader = null;
+        if (message.toLowerCase().contains("tiktok")) {
+            downloader = new TikTokDownloader();
+        } else if (message.toLowerCase().contains("instagram")) {
+            downloader = new InstagramDownloader();
+        }
+        if (downloader != null) {
             try {
                 downloader.download(message);
-            } catch (IllegalArgumentException e){
-                System.out.println(String.format("Something is wrong: %s", e));
+            } catch (Exception e){
+                System.out.println("Ошибка при загрузке видео " + e.getMessage());
             }
         }
-        else if (message.contains("instagram")) {
-            VideoDownloader downloader = new InstagramDownloader();
-            try {
-                downloader.download(message);
-            } catch (IllegalArgumentException e){
-                System.out.println(String.format("Something is wrong: %s", e));
-            }
-        }
-        else{
+        else {
             System.out.println("Введена неккоректная ссылка");
         }
     }
