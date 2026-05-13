@@ -16,7 +16,7 @@ public class BotMessageProcessor {
             }
         }
         else {
-            System.out.println("Введена неккоректная ссылка");
+            System.out.println("Введена неккоректная ссылка!");
         }
     }
 }
