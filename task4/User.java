@@ -1,0 +1,35 @@
+package task4;
+
+import java.util.Objects;
+
+public class User {
+    public String name;
+    public String lastName;
+    public int age;
+
+    public User (String name, String lastname, int age){
+        this.name = name;
+        this.lastName = lastname;
+        this.age = age;
+    }
+    @Override
+    public String toString (){
+        return String.format("Меня зовут %s.\nМоя фамилия %s.\nМне %d", name, lastName, age);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return age == user.age && Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash();
+    }
+}
